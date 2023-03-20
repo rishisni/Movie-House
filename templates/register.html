@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <h4>User Registration</h4>
+</head>
+<body>
+    <form action="/register-user" method="POST">
+        <div>
+            <input type="text" for="username" name="username" placeholder="username" required>
+            <br>
+            <input type="email" for="email" name="email" placeholder="email" required>
+        <br>
+            <input type="password" for="password" name="password" placeholder="password" required>
+            
+        </div>
+        <br>
+        <button value="submit" >Register</button>
+    </form>
+    <p>Already Registered ! <a href="{{url_for('login')}}">Login</a></p>
+    
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+       <div class="notification is-danger">
+           {{ messages[0] }}. Already Registered ! <a href="{{ url_for('login') }}">Login</a>.
+       </div>
+   {% endif %}
+   {% endwith %}
+
+</body>
+</html>
