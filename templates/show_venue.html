@@ -4,10 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body>
-    <h2>Welcome {{username}}</h2>
+    <title>My Venues</title>
     {% if current_user.is_authenticated %} 
     {% if current_user==user %}
      <a href="/">Shows</a>
@@ -22,8 +19,20 @@
     {% endif %}
     
     {% endif %}
+    <hr>
+</head>
+<body> 
     
-       
-    
-</body>
+     {% for venue in venues %}
+        {{venue.index}}
+         <p>Name : {{venue.name}}</p>
+         <p>Place :{{venue.place}}</p>
+         <p>Location :{{venue.location}}</p>
+         <p>Capacity :{{venue.capacity}}</p>
+         <br>
+         <hr>
+      {% endfor %}   
+
+      
+    </body>
 </html>
