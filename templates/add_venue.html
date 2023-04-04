@@ -1,47 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Venue</title>
-    {% if current_user.is_authenticated %} 
-    {% if current_user==user %}
-     <a href="/">Shows</a>
-     <a href="{{url_for('logout')}}">Logout</a>
-    {% elif current_user==admin %}
-    <a href="{{url_for('add_venue')}}">Add Venue</a>
-    <a href="{{url_for('add_show')}}">Add Show</a>
-    <a href="{{url_for('show_venue')}}">My Venues</a>
-    <a href="{{url_for('show_show')}}">My Shows</a>
+{% extends "base.html" %} 
 
-    <a href="{{url_for('logout')}}">Logout</a>
-    {% endif %}
-    
-    {% endif %}
-    <hr>
-</head>
+{% block title %} 
+Add Venue 
+{% endblock %}
+
+{% block content %}
 <body>
    
-           
-
+    <div class="add-show-venue">
+       <h2>Add Venues</h2>
          <form action="add-venue" method="POST">
-            <label for="name">Name</label>
+            <label for="name">Name :</label>
             <input type="text" name="name" required>
             <br>
-            <label for="place">Place</label>
+            <label for="place">Place :</label>
             <input type="text" name="place" required>
             <br>
-            <label for="location">location</label>
+            <label for="location">location:</label>
             <input type="text" name="location" required>
             <br>
-            <label for="capacity">Capacity</label>
+            <label for="capacity">Capacity:</label>
             <input type="number" name="capacity" required>
             <br>
-            <button type="submit">Save</button>
+            <br>
+            <button class="btn-add" type="submit">Add Venue</button>
         
         </form>
-             
-         </form>   
+    </div>
+     
 </body>
-</html>
+{% endblock %}

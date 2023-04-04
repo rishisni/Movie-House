@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" type="image/png" href="/static/images/favicon.png">
+    <title>{% block title %} {% endblock %}</title>
+
+    <div class="header">
+    {% if current_user.is_authenticated %} 
+    {% if current_user==user %}
+     <!-- <button class="button2" value="username">{{username}}</button> -->
+     <a href="{{url_for('user_show')}}">Shows</a>
+     <a href="{{url_for('logout')}}">Logout</a>
+     
+    {% elif current_user==admin %}
+    <!-- <button class="button2" value="username">{{username}}</button> -->
+    <a href="{{url_for('add_venue')}}">Add Venue</a>
+    <a href="{{url_for('add_show')}}">Add Show</a>
+    <a href="{{url_for('show_venue')}}">My Venues</a>
+    <a href="{{url_for('show_show')}}">My Shows</a>
+
+    <a href="{{url_for('logout')}}">Logout</a> &nbsp;
+    {% endif %}
+    
+    {% endif %}
+   
+</div>
+<hr>
+    <body class="bg-color"></body>
+
+    
+</head>
+
+
+{% block content %} 
+{% endblock %}
+</html>

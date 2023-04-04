@@ -1,33 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <h4>Admin Registration</h4>
-</head>
-<body>
+{% extends "base.html" %} 
+
+{% block title %} 
+Admin registration
+{% endblock %}
+
+{% block content %}
+<body class="admin1">
     <form action="/register-admin" method="POST">
-        <div>
+        <div class="admin">
+            <h2>Admin Registration</h2>
             <input type="text" for="username" name="username" placeholder="username" required>
             <br>
             <input type="email" for="email" name="email" placeholder="email" required>
-        <br>
-            <input type="password" for="password" name="password" placeholder="password" required>
-            
+            <br>
+            <input type="password" for="password" name="password" placeholder="password" required>  
+            <br> <br>
+            <button value="submit" class="button" >Register</button>
+            <br>
+            <p>Already Registered ! <a href="{{url_for('login_admin')}}">Login</a></p>
+            <br>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+          
+               {{ messages[0] }}. Go to <a href="{{ url_for('login_admin') }}">login page </a>.
+          
+            {% endif %}
+            {% endwith %}
         </div>
-        <br>
-        <button value="submit" >Register</button>
-        <p>Already Registered ! <a href="{{url_for('login_admin')}}">Login</a></p>
+           
+
     </form>
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-       <div class="notification is-danger"> <br>
-           {{ messages[0] }}. Go to <a href="{{ url_for('login_admin') }}">login page </a>.
-       </div>
-   {% endif %}
-   {% endwith %}
+   
 
 </body>
-</html>
+{% endblock %}

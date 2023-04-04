@@ -1,0 +1,127 @@
+/* user login/registeration  */
+.user{
+    outline-style: solid;
+    outline-color: rgb(29, 72, 109);
+    padding: 16px 10px;
+    width:15%;
+    position: fixed; top: 200px; right: 650px;
+    background-color: rgb(255, 255, 255);
+  
+    text-align: center;
+    margin: auto;
+    
+}
+
+/* admin login/registeration */
+.admin{ 
+    outline-style: solid;
+    outline-color: rgb(29, 72, 109);
+    padding: 16px 10px;
+    width:15%;
+    position: fixed; top: 200px; right: 650px;
+    background-color: rgb(255, 255, 255);
+  
+    text-align:center;
+    margin:auto; 
+
+}
+/* buttons */
+.button{
+    background-color: #0e0f0e;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 16px;
+    margin: auto;
+    border-radius:10px;
+    box-shadow: 3px 3px 2px 2px rgb(103, 90, 90);
+}
+
+h2{
+    color: rgb(60, 60, 164);
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 20px;
+    text-shadow: 5px 5px 10px rgb(47, 18, 18);
+
+}
+.button2{
+    background-color: #212221;
+    color: white;
+    padding: 7px 7px;
+    text-align: center;
+    cursor: none;
+    font-size: 16px;
+    border-radius: 19px;
+    
+}
+.btn-index{
+    text-decoration: none;
+    background-color: #0f160f;
+    color: white;
+    padding: 8px 8px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 16px;
+
+}
+
+.bg-color{
+    background-color:#f3bec4;
+
+}
+
+.img{
+    border: solid;
+    width: 100%;
+    height: 70%;
+   object-fit:fill;   
+}
+
+.add-show-venue{
+    outline-style: solid;
+    outline-color: rgb(29, 72, 109);
+    padding: 16px 10px;
+    width:20%;
+    position: fixed; top: 200px; right: 650px;
+    background-color: rgb(255, 255, 255);
+  
+    text-align: center;
+    margin: auto;
+
+}
+.show-venue{
+    display:flexbox;
+    
+    outline-style: solid;
+    outline-color: rgb(29, 72, 109);
+    padding: 16px 10px;
+    width:300px;
+
+    background-color: rgb(255, 255, 255);
+
+}
+
+.btn-add{
+    text-decoration: none;
+    background-color: #0f160f;
+    color: white;
+    padding: 8px 8px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 10px;
+    border-bottom:#82797a;
+    font-size: 16px;
+
+}
+
+.header{
+    padding: 16px 10px;
+    width:100%;
+
+    background-color: #f3bec4;
+}
+hr{
+    border-top: 2px solid rgb(10, 10, 10);
+}
+

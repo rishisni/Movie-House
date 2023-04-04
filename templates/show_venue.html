@@ -1,38 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Venues</title>
-    {% if current_user.is_authenticated %} 
-    {% if current_user==user %}
-     <a href="/">Shows</a>
-     <a href="{{url_for('logout')}}">Logout</a>
-    {% elif current_user==admin %}
-    <a href="{{url_for('add_venue')}}">Add Venue</a>
-    <a href="{{url_for('add_show')}}">Add Show</a>
-    <a href="{{url_for('show_venue')}}">My Venues</a>
-    <a href="{{url_for('show_show')}}">My Shows</a>
+{% extends "base.html" %} 
 
-    <a href="{{url_for('logout')}}">Logout</a>
-    {% endif %}
-    
-    {% endif %}
-    <hr>
-</head>
+{% block title %} 
+Venues
+{% endblock %}
+
+{% block content %}
+<body>
 <body> 
-    
+   
      {% for venue in venues %}
         {{venue.index}}
+        <div class="show-venue">
          <p>Name : {{venue.name}}</p>
          <p>Place :{{venue.place}}</p>
          <p>Location :{{venue.location}}</p>
          <p>Capacity :{{venue.capacity}}</p>
          <br>
-         <hr>
+      </div>
+      <br>
       {% endfor %}   
 
-      
+   
     </body>
-</html>
+    {% endblock %}

@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head> 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Start</title>
-
-    <header>
-        <a href="{{url_for('register')}}">User</a>
-        <a href="{{url_for('register_admin')}}">Admin</a>
-        <hr>
-    </header>
-    <h1>Ticket Booking Hadda</h1>
-    
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" type="image/png" href="/static/images/favicon.png">
+    <title>Start</title> 
 </head>
-<body>
+<body bgcolor="#f3bec4">
     
+    <br> 
+    
+    <a href="{{url_for('register')}}" class="btn-index">User</a>  &nbsp;
+
+    <a href="{{url_for('register_admin')}}" class="btn-index">Admin</a> 
+   
+    <br> <br>
+    <hr>
+    
+    
+    <img src="/static/images/MOVIE HOUSE.jpg" class="img">
 </body>
 </html>

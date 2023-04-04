@@ -22,6 +22,7 @@ class User(UserMixin,db.Model):
     username = db.Column(db.String(20), unique =True)
     email = db.Column(db.String(50),unique=True)
     password = db.Column(db.String(50))
+    # tickets_booked = db.relationship('Tickets')
     
 
 
@@ -30,6 +31,11 @@ class Admin(UserMixin,db.Model):
     username = db.Column(db.String(20), unique =True)
     email = db.Column(db.String(50),unique=True)
     password = db.Column(db.String(50))
+    # shows = db.relationship('Shows')
+    # venues = db.relationship('Venues')
+    # tickets_booked = db.relationship('Tickets')
+  
+
    
 
 class Venues(db.Model):
@@ -38,6 +44,11 @@ class Venues(db.Model):
     place =  db.Column(db.String(150))
     location =  db.Column(db.String(150),unique =True)
     capacity = db.Column(db.Integer)
+    # shows_admin_id = db.Column(db.Integer, db.ForeignKey('admin.id'))
+    # shows = db.relationship('Shows')
+    # venue_booked = db.Column(db.Integer, db.ForeignKey('venues.id'))
+    # tickets_booked = db.relationship('Tickets')
+
     
     
 
@@ -49,6 +60,22 @@ class Shows(db.Model):
     venue = db.Column(db.String(150))
     tags = db.Column(db.String(150))
     price = db.Column(db.Integer)
+    # venue_booked = db.Column(db.Integer, db.ForeignKey('venues.id'))
+    # venues = db.relationship('Venues')
+    # tickets_booked = db.relationship('Tickets')
+
+class Tickets(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    show_booked = db.Column(db.Integer, db.ForeignKey('shows.id'))
+    venue_booked = db.Column(db.Integer, db.ForeignKey('venues.id'))
+    user = db.Column(db.Integer, db.ForeignKey('user.id'))
+    name = db.Column(db.String(150))
+    venue = db.Column(db.String(150))
+    timing = db.Column(db.String(150))
+    number = db.Column(db.Integer)
+    price = db.Column(db.Integer)
+    total = db.Column(db.Integer)
+
    
 
 
@@ -188,6 +215,44 @@ def show_show():
     show = Shows.query.all()
     return render_template('show_show.html',shows=show,admin=current_user)
 
+
+@app.route('/user_show')
+@login_required
+def user_show():
+    show =Shows.query.all()
+    return render_template('user_show.html',shows=show,user=current_user)
+
+@app.route('/update-show')
+@login_required
+def update_show():
+    return render_template('update_show.html')
+
+@app.route('/shows/<int:id>/delete')
+@login_required
+def delete_show(id):
+    shows=Shows.query.filter_by(show_id=id).first()
+    db.session.delete(shows)
+    db.session.commit()
+    return redirect('show_show',show_id=id)
+
+
+@app.route('/book-ticket',methods=['GET','POST'])
+@login_required
+def book_tickets():
+    if request.method == "POST":
+        show = Shows.query.get(int(id))
+        venue = Venues.filter_by(name = str(show.venue)).first()
+        no_of_seats = request.form['no_of_seats']
+
+        new_ticket = Tickets(user=current_user.id,show_booked=show.name,venue_booked =venue.name,no_of_seats=no_of_seats,timing=show.timing,price=show.price,total=int(price)*int(no_of_seats))
+        db.session.add(new_ticket)
+        db.session.commit()
+        return redirect(url_for('book_ticket',user=current_user,venues=venue_booked,shows=show_booked,price=price,no_of_seats=no_of_seats,timing=timing))
+
+        
+    return render_template('book_ticket.html',user=current_user)
+       
+    
 
 @app.route('/logout')
 @login_required

@@ -1,0 +1,36 @@
+{% extends "base.html" %} 
+
+{% block title %} 
+Book Show 
+{% endblock %}
+
+{% block content %}
+<body> 
+    <form action="book-ticket",method ='POST'>
+         
+        <label for="show-name"></label>
+        <input type="text" name="show-name"   required>
+        <br>
+       
+        <label for="timing">Timing</label>
+        <input type="text" name="timing" required> 
+        <br>
+        <label for="timing">Venue</label>
+        <input type="text" name="venue" required> 
+       
+        <br>
+        <label for="no_of_seats">No. Of Seats </label>
+        <input type="text" name="tags" required>
+        <br>
+        <label for="price">Price</label>
+        <input type="number" name="price" required>
+        <br>
+        <label for="price">Total</label>
+        <input type="number" name="total" required>
+        <br>
+        <button type="submit">Book</button>
+
+    </form>
+   
+</body>
+{% endblock %}
