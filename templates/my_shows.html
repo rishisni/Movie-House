@@ -1,0 +1,43 @@
+{% extends "base.html" %} 
+
+{% block title %} 
+Shows
+{% endblock %}
+
+{% block content %}
+<body>
+  <br>
+  <div class="container">
+    <div class="row">
+    
+      {% for show in shows %}
+        <div class="col-md-3">
+          <div class="venue-item  border rounded p-3" style="background-color: #e9ecef;">
+            <p>Name : {{show.name}}</p>
+            <p>Rating :{{show.rating}}</p>
+            <p>Timing :{{show.timing}}</p>
+            <p>Venue :{{show.venues.name}}</p>
+            <p>Tags :{{show.tags}}</p>
+            <p>Price :{{show.price}}</p>
+            <a href="/update_show/{{show.id}}" class="btn btn-dark">Update</a>
+            <a href="/delete_show/{{show.id}}" class="btn btn-dark">Delete</a>
+   
+          </div>
+         <br>
+        </div>
+        
+        
+        {% if loop.index is divisibleby(4) %}
+          <div class="clearfix"></div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <br>
+  </div>
+  
+  
+
+   
+     
+</body>
+{% endblock %}

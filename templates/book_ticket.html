@@ -6,31 +6,30 @@ Book Show
 
 {% block content %}
 <body> 
-    <form action="book-ticket",method ='POST'>
-         
-        <label for="show-name"></label>
-        <input type="text" name="show-name"   required>
+    <div class="add-show-venue">
+    <form action=""method ='POST'>
+         <h2>Book Tickets</h2>
+     
+        Name :{{show.name}}
         <br>
        
-        <label for="timing">Timing</label>
-        <input type="text" name="timing" required> 
+        Timing:{{show.timing}} 
         <br>
-        <label for="timing">Venue</label>
-        <input type="text" name="venue" required> 
+       Venue:{{show.venues.name}}
+       <br>
+       Price :{{show.price}}
+       <br>
        
+       Available Seats : {{show.venues.capacity - show.tickets_booked|length }}
+      
         <br>
-        <label for="no_of_seats">No. Of Seats </label>
-        <input type="text" name="tags" required>
+        <label for="no_of_seats">Seats </label>
+        <input type="text" name="no_of_seats" required>
         <br>
-        <label for="price">Price</label>
-        <input type="number" name="price" required>
-        <br>
-        <label for="price">Total</label>
-        <input type="number" name="total" required>
-        <br>
-        <button type="submit">Book</button>
+        <button class="button" type="submit">Book</button>
 
     </form>
+</div>
    
 </body>
 {% endblock %}

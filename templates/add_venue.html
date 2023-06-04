@@ -1,32 +1,36 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
 
-{% block title %} 
-Add Venue 
+{% block title %}
+Add Venue
 {% endblock %}
 
 {% block content %}
+
 <body>
-   
-    <div class="add-show-venue">
-       <h2>Add Venues</h2>
-         <form action="add-venue" method="POST">
-            <label for="name">Name :</label>
-            <input type="text" name="name" required>
+    {% if current_user.is_authenticated %}
+    {% if current_user==admin %}
+
+    <div class="container w-25 my-5 border" style="background-color: #eee ; text-align :center">
+        <h2  class="h3 mb-3 font-weight-normal">Add Venues</h2>
+        <form action="/add-venue" method="POST">
+            
+            <input type="text" name="name" required placeholder="Name"  class="form-control" >
+            
+            
+            <input type="text" name="place" required placeholder="Place"  class="form-control" >
+            
+            <input type="text" name="location" required placeholder="Location"  class="form-control" >
+            
+           
+            <input type="number" name="capacity" required placeholder="Capacity"  class="form-control">
+            
             <br>
-            <label for="place">Place :</label>
-            <input type="text" name="place" required>
+            <button class="btn btn-lg btn-dark btn-block" type="submit">Add Venue</button>
             <br>
-            <label for="location">location:</label>
-            <input type="text" name="location" required>
-            <br>
-            <label for="capacity">Capacity:</label>
-            <input type="number" name="capacity" required>
-            <br>
-            <br>
-            <button class="btn-add" type="submit">Add Venue</button>
-        
         </form>
+        <br>
     </div>
-     
+    {% endif %}
+    {% endif %}
 </body>
 {% endblock %}

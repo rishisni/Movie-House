@@ -1,0 +1,32 @@
+{% extends "base.html" %} 
+
+{% block title %} 
+My Bookings
+{% endblock %}
+
+{% block content %}
+
+<body>
+<div class="container">
+  <div class="row">
+    
+    {% for ticket in tickets %}
+      <div class="col-md-3">
+        <div class="venue-item border rounded p-3" style="background-color: #e9ecef;">
+          <p>Ticket Id : {{ticket.id}} </p>  
+          <p>Show Name : {{ticket.show.name}}</p>   
+          <p> Show Time : {{ticket.timing}} hrs</p>
+          
+        </div>
+      </div>
+      {% if loop.index is divisibleby(4) %}
+        <div class="w-100"></div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+
+</body>
+
+{% endblock %}

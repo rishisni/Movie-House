@@ -5,11 +5,18 @@ Home
 {% endblock %}
 
 {% block content %}
-<body>
-  <marquee><h2>Welcome {{username}}</h2></marquee>  
+<body> 
+ 
+    
+  {% if current_user==user %}
+  <h2>Welcome {{user.username}}</h2>
+  {% elif current_user==admin %}
+ <h2>Welcome {{admin.username}}</h2>
     
     
-       
+  {% endif %}
+    
+  
 </body>
 
  {% endblock %}

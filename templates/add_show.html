@@ -1,38 +1,46 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
 
-{% block title %} 
+{% block title %}
 Add Show
 {% endblock %}
 
 {% block content %}
-<body>
-<div class="add-show-venue">
-<h2>Add Shows</h2>
-    
-    <form action="add-show" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" name="name" required>
+
+<body class="text-center">
+   
+        
+    <div class="container w-25 my-5 border" style="background-color:rgb(255, 252, 252)  ; text-align :center">
         <br>
-        <label for="rating">Rating:</label>
-        <input type="number" step="any" name="rating" required>
+        <h2 class="h3 mb-3 font-weight-normal">Add Shows</h2>
+   
+        <form action="/add-show" method="POST" class="form-signin">
+            
+            <input type="text" name="name" required placeholder="Show Name"  class="form-control">
+            
+            <input type="text" step="any" name="rating" required placeholder="Show Rating"  class="form-control"> 
+           
+            <input type="text" name="timing" required placeholder="Show Time"  class="form-control">
+            
+            <input type="text" name="tags" required placeholder="Show Tags"  class="form-control">
+           
+            <input type="number" name="price" required placeholder="Show Price"  class="form-control">
+            
+            <label for="venue"></label>
+            <select id="venue" class="selectpicker " name="venue"  class="form-control">
+                {% for venue in venues %}
+                <option value="{{ venue.id }}"> {{ venue.name }} </option>
+                <li>
+                    <hr class="dropdown-divider">
+
+                </li>
+                {% endfor %}
+            </select>
+            <br>
+            <br>
+            <button class="btn btn-lg btn-dark btn-block" type="submit">Add Show </button>
+            <br>
+        </form>
         <br>
-        <label for="timing">Timing:</label>
-        <input type="text" name="timing" required> 
-        <br>
-        <label for="venue">Venue:</label>
-        <input type="text" name="venue" required> 
-       
-        <br>
-        <label for="tags"> Tags :</label>
-        <input type="text" name="tags" required>
-        <br>
-        <label for="price">Price:</label>
-        <input type="number" name="price" required>
-        <br>
-        <br>
-        <button class="btn-add" type="submit">Add Show </button>
-    
-    </form> 
-</div>
+    </div>
 </body>
 {% endblock %}

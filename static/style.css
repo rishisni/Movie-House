@@ -82,11 +82,11 @@ h2{
     outline-style: solid;
     outline-color: rgb(29, 72, 109);
     padding: 16px 10px;
-    width:20%;
+    width:25%;
     position: fixed; top: 200px; right: 650px;
     background-color: rgb(255, 255, 255);
   
-    text-align: center;
+    text-align: left;
     margin: auto;
 
 }
@@ -124,4 +124,6 @@ h2{
 hr{
     border-top: 2px solid rgb(10, 10, 10);
 }
+
+
 
