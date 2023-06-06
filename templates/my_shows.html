@@ -14,13 +14,13 @@ Shows
         <div class="col-md-3">
           <div class="venue-item  border rounded p-3" style="background-color: #e9ecef;">
             <p>Name : {{show.name}}</p>
-            <p>Rating :{{show.rating}}</p>
-            <p>Timing :{{show.timing}}</p>
+            <p>Rating :{{show.rating}} </p>
+            <p>Timing :{{show.timing}} hrs</p>
             <p>Venue :{{show.venues.name}}</p>
             <p>Tags :{{show.tags}}</p>
             <p>Price :{{show.price}}</p>
-            <a href="/update_show/{{show.id}}" class="btn btn-dark">Update</a>
-            <a href="/delete_show/{{show.id}}" class="btn btn-dark">Delete</a>
+            <a href="/update_show/{{show.id}}" class="btn btn-lg btn-dark btn-block">Update</a>
+            <a href="/delete_show/{{show.id}}" class="btn btn-lg btn-dark btn-block">Delete</a>
    
           </div>
          <br>

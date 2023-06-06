@@ -14,7 +14,7 @@ db = SQLAlchemy(app)
 db.init_app(app) 
 app.app_context().push()
 login_manager = LoginManager()
-login_manager.login_view ='login'
+login_manager.login_view ='index'
 login_manager.init_app(app)
 
 class User(UserMixin,db.Model):
@@ -71,11 +71,11 @@ class Tickets(db.Model):
     timing = db.Column(db.String(150))
     number = db.Column(db.Integer)
     price = db.Column(db.Integer)
-    total = db.Column(db.Integer)
+    
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'),nullable = False)
     show_id = db.Column(db.Integer, db.ForeignKey('shows.id'))
 
-    user = db.relationship('User', backref='tickets')
+    # user = db.relationship('User', backref='tickets')
 
    
 
@@ -220,13 +220,7 @@ def my_shows():
     show = Shows.query.all()
     return render_template('my_shows.html',shows=show,admin=current_user)
 
-# @app.route('/my_bookings')
-# @login_required
-# def my_bookings():
-#     user=User.query.all()
-#     show=Shows.query.all()
-#     ticket=Tickets.query.all()
-#     return render_template('my_bookings.html',user=current_user,shows=show,tickets=ticket)
+
 
 
 @app.route('/user_show')
@@ -246,6 +240,7 @@ def update_show(id):
         show_to_update.price = request.form['price']
 
         db.session.commit()
+        flash('Show updated successfully!', 'success')
         return redirect(url_for('my_shows'))
 
     return render_template('update_show.html', admin = current_user, show = show_to_update)
@@ -256,9 +251,9 @@ def update_show(id):
 def update_venue(id):
     venue_to_update = Venues.query.get(int(id))
     if request.method == 'POST':
-        venue_to_update.name= request.form['name']
-        venue_to_update.place = request.form['place']
-        venue_to_update.location = request.form['location']
+        # venue_to_update.name= request.form['name']
+        # venue_to_update.place = request.form['place']
+        # venue_to_update.location = request.form['location']
         venue_to_update.capacity = request.form['capacity']
         
 
@@ -297,22 +292,32 @@ def delete_venue(id):
 @login_required
 def book_ticket(id):
     show = Shows.query.get(id)
-    venue = Shows.query.all()
+    venue = Venues.query.all()
     if request.method == "POST":
         
         # venue = Venues.filter(name = str(show.venue)).first()
         no_of_seats = request.form['no_of_seats']
         # total = int(no_of_seats) * show.price
 
-        new_ticket = Tickets(user=current_user,number=no_of_seats,timing=show.timing,price=show.price,show=show)
+        new_ticket = Tickets(user_id=current_user.id,number=no_of_seats,timing=show.timing,price=show.price,show=show)
         db.session.add(new_ticket)
         db.session.commit()
-        return redirect(url_for('my_bookings',id=id,user=current_user,venue=show.venue,price=show.price,no_of_seats=no_of_seats,timing=show.timing))
+        return redirect(url_for('my_bookings',id=id))
 
         
     return render_template('book_ticket.html',user=current_user,show=show)
-       
-@app.route('/my_bookings')
+
+
+@app.route('/search')
+@login_required
+def search():
+    query = request.args.get('query')
+    venues = Venues.query.filter(Venues.name.ilike(f'%{query}%')).all()
+    shows = Shows.query.filter(Shows.name.ilike(f'%{query}%')).all()
+    return render_template('search_results.html', query=query, venues=venues, shows=shows)
+
+
+@app.route('/my_bookings') 
 @login_required
 def my_bookings():
     show=Shows.query.all()

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}
+Search Results
+{% endblock %}
+
+{% block content %}
+<h2 class="h3 mb-3 font-weight-normal" style="text-align: center;">Search Results for "{{ query }}"</h2>
+<div class="container">
+  <div class="row"> 
+    <div class="col-md-3">
+      <div class="venue-item border rounded p-3" style="background-color: #e9ecef;">
+       
+
+        <h3>Venues:</h3>
+        {% if venues %}
+          <ul>
+            {% for venue in venues %}
+              <li>{{ venue.name }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>No venues found.</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="venue-item border rounded p-3" style="background-color: #e9ecef;">
+        <h3>Shows:</h3>
+        {% if shows %}
+          <ul>
+            {% for show in shows %}
+              <li>{{ show.name }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>No shows found.</p>
+        {% endif %}
+      </div>
+    </div>
+   
+  </div>
+</div>
+{% endblock %}

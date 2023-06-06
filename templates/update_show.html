@@ -6,29 +6,36 @@ Update Show
 
 {% block content %}
 
-<body>
-    <div class="container w-25 my-5 border" style="background-color:#eee  ;">
-        <h2 style="text-align: center;">Update Shows</h2>
+<body >
+    <div class="container w-25 my-5 border" style="background-color: #e9ecef ; text-align :center">
+        <br>
+       <h2  class="h3 mb-3 font-weight-normal">Update Shows</h2>
 
         <form method="POST">
-            <h9>Show   :{{ show.name}}</p1>
-            <br>
-            <p1>Rating :{{show.rating}}</p1>
-            <br>
-            <p1>Venue  : {{ show.venues.name }}</p1>
-            <br>
-            <label for="timing"></label>
-            <input type="text" name="timing" value="{{show.timing}}" required placeholder="Update Time">
-            <br>
-            <label for="tags"></label>
-            <input type="text" name="tags" value="{{show.tags}}" required placeholder="Update Tags">
-            <br>
-            <label for="price"></label>
-            <input type="number" name="price" value="{{show.price}}" required placeholder="Update Price">
-            <br> <br>
-            <button class="btn btn-dark " style="text-align: center;" type="submit">Update</button>
+            
+            <input type="text" name="name" value="{{show.name}}" required placeholder="Update Name" class="form-control" disabled>
+            
+            <input type="text" name="rating" value="{{show.rating}}" required placeholder="Update Rating" class="form-control" disabled>
+          
+            <input type="text" name="venue" value="{{show.venues.name}}" required placeholder="Update Venue" class="form-control" disabled>
+            <input type="text" name="timing" value="{{show.timing}}" required placeholder="Update Time" class="form-control">
+           
+            <input type="text" name="tags" value="{{show.tags}}" required placeholder="Update Tags" class="form-control">
+            
+            <input type="number" name="price" value="{{show.price}}" required placeholder="Update Price" class="form-control">
+            <br> 
+            <button class="btn btn-lg btn-dark btn-block "  type="submit">Update</button>
 
         </form>
+        <br>
     </div>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="alert alert-{{ messages[0][0] }} alert-dismissible fade show" role="alert">
+            {{ messages[0][1] }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endif %}
+{% endwith %}
 </body>
 {% endblock %}

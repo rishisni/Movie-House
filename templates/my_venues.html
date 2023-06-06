@@ -10,6 +10,7 @@ Venues
    <div class="row"> 
      
      {% for venue in venues %}
+    
        <div class="col-md-3">
          <div class="venue-item  border rounded p-3" style="background-color: #e9ecef;">
             <p>Name : {{venue.name}}</p>
@@ -17,9 +18,10 @@ Venues
             <p>Location :{{venue.location}}</p>
             <p>Capacity :{{venue.capacity}}</p>
             <br>
-            <a href="/update_venue/{{venue.id}}" class="btn btn-dark">Update</a>
-            <a href="/delete_venue/{{venue.id}}" class="btn btn-dark">Delete</a>
+            <a href="/update_venue/{{venue.id}}" class="btn btn-lg btn-dark btn-block">Update</a>
+            <a href="/delete_venue/{{venue.id}}" class="btn btn-lg btn-dark btn-block">Delete</a>
           </div>
+         
          <br>
         </div>
        

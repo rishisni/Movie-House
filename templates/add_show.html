@@ -7,9 +7,9 @@ Add Show
 {% block content %}
 
 <body class="text-center">
-   
+    
         
-    <div class="container w-25 my-5 border" style="background-color:rgb(255, 252, 252)  ; text-align :center">
+    <div class="container w-25 my-5 border" style="background-color:#e9ecef ; text-align :center">
         <br>
         <h2 class="h3 mb-3 font-weight-normal">Add Shows</h2>
    
@@ -25,14 +25,11 @@ Add Show
            
             <input type="number" name="price" required placeholder="Show Price"  class="form-control">
             
-            <label for="venue"></label>
-            <select id="venue" class="selectpicker " name="venue"  class="form-control">
+           
+            <select id="venue" name="venue" class="form-control">
+                <option value="" disabled selected hidden >Select Venue</option>
                 {% for venue in venues %}
                 <option value="{{ venue.id }}"> {{ venue.name }} </option>
-                <li>
-                    <hr class="dropdown-divider">
-
-                </li>
                 {% endfor %}
             </select>
             <br>

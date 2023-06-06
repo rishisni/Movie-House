@@ -19,7 +19,7 @@ Admin registration
         </div>
     </nav>
     <form action="/register-admin" method="POST" class="form-signin">
-        <div class="container w-25 my-5 border" style="background-color:rgb(255, 255, 255)  ; text-align :center">
+        <div class="container w-25 my-5 border" style="background-color:#eee   ; text-align :center">
             <br>
             <h2 class="h3 mb-3 font-weight-normal"> Admin Registration</h2>
             <input type="text" for="username" name="username" class="form-control" placeholder="username" required>
@@ -29,6 +29,7 @@ Admin registration
             <input type="password" for="password" name="password" class="form-control" placeholder="password" required>
             <br>
             <button value="submit" class="btn btn-lg btn-dark btn-block">Register</button>
+            <br>
             <br>
             <p>Already Registered ! <a href="{{url_for('login_admin')}}">Login</a></p>
             <br>

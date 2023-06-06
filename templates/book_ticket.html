@@ -1,35 +1,41 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
 
-{% block title %} 
-Book Show 
+{% block title %}
+Book Show
 {% endblock %}
 
 {% block content %}
-<body> 
-    <div class="add-show-venue">
-    <form action=""method ='POST'>
-         <h2>Book Tickets</h2>
-     
-        Name :{{show.name}}
-        <br>
-       
-        Timing:{{show.timing}} 
-        <br>
-       Venue:{{show.venues.name}}
-       <br>
-       Price :{{show.price}}
-       <br>
-       
-       Available Seats : {{show.venues.capacity - show.tickets_booked|length }}
-      
-        <br>
-        <label for="no_of_seats">Seats </label>
-        <input type="text" name="no_of_seats" required>
-        <br>
-        <button class="button" type="submit">Book</button>
 
-    </form>
-</div>
-   
+<body class="text-center">
+
+
+    <div class="container w-25 my-5 border" style="background-color:#e9ecef ; text-align :center">
+        <br>
+        <form action="" method='POST'>
+            <h2 class="h3 mb-3 font-weight-normal">Book Tickets</h2>
+
+
+            <input type="text" name="name" placeholder="{{show.name}}" required class="form-control" disabled>
+            <input type="text" name="timing" placeholder="{{show.timing}} Hrs" required class="form-control" disabled>
+            <input type="text" name="venue_name" placeholder="{{show.venues.name}}" required class="form-control"
+                disabled>
+            <input type="text" name="price" placeholder="{{show.price}}" required class="form-control" disabled>
+            {% if show.venues.capacity - show.tickets_booked|length == 0 %}
+                <input type="text" name="name" placeholder="House Full" required class="form-control" disabled>
+            {% else %}
+                <input type="text" name="name"
+                    placeholder="{{ show.venues.capacity - show.tickets_booked|length }} seats remaining" required
+                    class="form-control" disabled>
+            {% endif %}
+
+            <input type="text" name="no_of_seats" placeholder="Number of Seats" required class="form-control">
+            <br>
+            <button class="btn btn-lg btn-dark btn-block" type="submit">Book</button> 
+           
+
+        </form>
+        <br>
+    </div>
+
 </body>
 {% endblock %}

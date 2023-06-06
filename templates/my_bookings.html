@@ -7,10 +7,12 @@ My Bookings
 {% block content %}
 
 <body>
+  <br>
 <div class="container">
   <div class="row">
     
     {% for ticket in tickets %}
+    {% if ticket.user_id == user.id %}
       <div class="col-md-3">
         <div class="venue-item border rounded p-3" style="background-color: #e9ecef;">
           <p>Ticket Id : {{ticket.id}} </p>  
@@ -18,13 +20,19 @@ My Bookings
           <p> Show Time : {{ticket.timing}} hrs</p>
           
         </div>
+        {% endif %}
+        <br>
       </div>
+
       {% if loop.index is divisibleby(4) %}
         <div class="w-100"></div>
       {% endif %}
     {% endfor %}
+
   </div>
+  
 </div>
+
 
 
 </body>
